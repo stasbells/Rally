@@ -1,0 +1,31 @@
+{
+    "WalletData": {
+        "Money": 13422
+    },
+    "GarageData": {
+        "Items": [
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": true
+            }
+        ]
+    },
+    "MapData": {
+        "Items": [
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": true
+            }
+        ]
+    }
+}
