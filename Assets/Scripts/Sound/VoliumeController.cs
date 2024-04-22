@@ -27,12 +27,8 @@ public class VolumeController : MonoBehaviour
 
     public void OnVolumeChange()
     {
-
         foreach (AudioSource source in _gameMusic)
-        {
             source.volume = _volumeSlider.value;
-            Debug.Log(source.volume);
-        }
 
         //SaveVolumeSetting();
     }

@@ -2135,7 +2135,7 @@ MonoBehaviour:
   _widths: []
   _mesh: {fileID: 0}
   _segmentsPerMeter: 10
-  _textureScale: 50
+  _textureScale: 200
 --- !u!1001 &1008424759725797871
 PrefabInstance:
   m_ObjectHideFlags: 0

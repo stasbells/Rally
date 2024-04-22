@@ -55,7 +55,7 @@ public class AnimateCarAlongSpline : MonoBehaviour
         if (gameObject.activeSelf)
         {
             _currentDistance = (_currentDistance + _currentSpeed * Time.deltaTime / _splineLength / ScaleCalibration) % MaxDistance;
-            _totalDistance = (_totalDistance + _currentSpeed * Time.deltaTime / (_splineLength * Constants.LapCount) / ScaleCalibration);
+            _totalDistance += _currentSpeed * Time.deltaTime / (_splineLength * Constants.LapCount) / ScaleCalibration;
         }
 
         float3 posOnSplineLocal = SplineUtility.EvaluatePosition(_spline, _currentDistance);

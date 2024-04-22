@@ -35,7 +35,6 @@ public class LapCounter : MonoBehaviour
         {
             _currentLap = 0;
             Finised?.Invoke();
-            _targetCar.gameObject.GetComponent<PlayerSpeedController>().SetFinished();
         }
 
         _previousDistance = _targetCar.CurrentDistance;

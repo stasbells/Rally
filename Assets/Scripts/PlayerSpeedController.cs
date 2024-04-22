@@ -6,67 +6,57 @@ public class PlayerSpeedController : MonoBehaviour, ISpeedController
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _acceleration;
 
-    private GameObject _image;
+    private OverheatWarning _overheatWarning;
+    private PlayerInput _playerInput;
 
     private const float MinSpeed = 0f;
     private const float MaxSpeedFactor = 0.2f;
     private const float OverheatingFactor = 1.5f;
-    private const float FinishFactor = 2f;
 
-    private float _overheatingSpeedValue;
     private float _counter = 0f;
+    private float _overheatingSpeedValue = 0.8f;
     private bool _isOverheating = false;
-    private bool _isFinished = false;
+
+    public float MaxSpeed => _maxSpeed;
 
     private void Awake()
     {
-        _overheatingSpeedValue = 0.8f * _maxSpeed;
+        _overheatingSpeedValue *= _maxSpeed;
+        _playerInput = new PlayerInput();
+    }
+
+    private void OnEnable()
+    {
+        _playerInput.Enable();
     }
 
     private void OnDisable()
     {
-        _isFinished = false;
+        _counter = 0f;
+        _playerInput.Disable();
     }
-
-    public float MaxSpeed => _maxSpeed;
 
     public float Change(float speed)
     {
-        if (_isFinished)
-        {
-            _image.SetActive(false);
-            return Decrease(speed, FinishFactor);
-        }
-
         if (speed < _overheatingSpeedValue)
             _counter = 0f;
 
         if (speed < 5f)
             _isOverheating = false;
 
-        if(_counter > 0.5f)
-            _image.SetActive(true);
+        _overheatWarning.ActiveBy(_counter);
 
-        if(_counter == 0f)
-            _image.SetActive(false);
-
-        if (Input.GetKey(KeyCode.W))
+        if (_playerInput.Player.Move.ReadValue<float>() > 0.1f)
         {
             if (speed >= _overheatingSpeedValue && !_isOverheating)
             {
-                _counter += Time.deltaTime;
-
-                if (_counter > 3f)
-                    _isOverheating = true;
+                ÑountUntilOverheating();
 
                 return Increase(speed, MaxSpeedFactor);
             }
             else
             {
-                if (_isOverheating)
-                    return Decrease(speed, OverheatingFactor);
-                else
-                    return Increase(speed);
+                return _isOverheating ? Decrease(speed, OverheatingFactor) : Increase(speed);
             }
         }
         else
@@ -75,13 +65,19 @@ public class PlayerSpeedController : MonoBehaviour, ISpeedController
         }
     }
 
-    public void SetFinished() => _isFinished = true;
+    private void ÑountUntilOverheating()
+    {
+        _counter += Time.deltaTime;
 
-    public void SetImage(GameObject image) => _image = image;
+        if (_counter > 3f)
+            _isOverheating = true;
+    }
 
-    private float Increase(float speed, float factor = 1f) => 
+    public void SetOverheatWarning(OverheatWarning overheatWarning) => _overheatWarning = overheatWarning;
+
+    private float Increase(float speed, float factor = 1f) =>
         Math.Clamp(speed + _acceleration * factor * Time.deltaTime, MinSpeed, _maxSpeed);
 
-    private float Decrease(float speed, float factor = 1f) => 
+    private float Decrease(float speed, float factor = 1f) =>
         Math.Clamp(speed - _acceleration * factor * Time.deltaTime, MinSpeed, _maxSpeed);
 }

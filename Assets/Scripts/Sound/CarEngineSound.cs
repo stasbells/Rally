@@ -1,25 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AnimateCarAlongSpline))]
 [RequireComponent(typeof(AudioSource))]
 public class CarEngineSound : MonoBehaviour
 {
     [SerializeField] private AudioSource _engineSound;
 
-    private float _minPitch = 0.2f;
-    private float _maxPitch = 1f;
-    private KeyCode _accelerateKey = KeyCode.W;
+    private AnimateCarAlongSpline _car;
 
     private void Start()
     {
+        _car = GetComponent<AnimateCarAlongSpline>();
         _engineSound = GetComponent<AudioSource>();
-        _engineSound.pitch = _minPitch;
+        _engineSound.pitch = 0f;
     }
 
     private void Update()
     {
-        if (Input.GetKey(_accelerateKey))
-            _engineSound.pitch = Mathf.Lerp(_engineSound.pitch, _maxPitch, Time.deltaTime);
-        else
-            _engineSound.pitch = Mathf.Lerp(_engineSound.pitch, _minPitch, Time.deltaTime);
+        if (_car.isActiveAndEnabled)
+            _engineSound.pitch = Mathf.Lerp(_engineSound.pitch, (_car.CurrentSpeed + 15f) / 70f, Time.deltaTime * 5f);
     }
 }

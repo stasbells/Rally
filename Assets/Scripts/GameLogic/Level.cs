@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
     [SerializeField] private Countdown _countdown;
     [SerializeField] private LapCounter _lapCounter;
     [SerializeField] private Speedometer _speedometer;
-    [SerializeField] private GameObject _image;
+    [SerializeField] private OverheatWarning _overheatWarning;
 
     private AnimateCarAlongSpline _playerCar;
     private AnimateCarAlongSpline _botCar;
@@ -64,7 +64,7 @@ public class Level : MonoBehaviour
         _playerCar.SetCountdown(_countdown);
         _botCar.SetCountdown(_countdown);
 
-        _playerCar.GetComponent<PlayerSpeedController>().SetImage(_image);
+        _playerCar.GetComponent<PlayerSpeedController>().SetOverheatWarning(_overheatWarning);
 
         _botCar.GetComponent<BotSpeedController>().SetTarget(_playerCar);
         _lapCounter.SetTarget(_playerCar);

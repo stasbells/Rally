@@ -1,6 +1,6 @@
 {
     "WalletData": {
-        "Money": 13422
+        "Money": 19438
     },
     "GarageData": {
         "Items": [
@@ -20,6 +20,9 @@
     },
     "MapData": {
         "Items": [
+            {
+                "IsBuyed": true
+            },
             {
                 "IsBuyed": true
             },

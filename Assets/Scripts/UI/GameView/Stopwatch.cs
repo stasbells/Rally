@@ -13,23 +13,12 @@ public class Stopwatch : MonoBehaviour
     private bool _srt = false;
 
     public bool Srt => _srt;
-
     public float Resault => _resault;
 
     void Awake()
     {
         _totalTime = 0f;
         _srt = false;
-    }
-
-    private void OnEnable()
-    {
-        //_lapCounter.Finised += SaveTotalTime;
-    }
-
-    private void OnDisable()
-    {
-        //_lapCounter.Finised -= SaveTotalTime;
     }
 
     void Update()
