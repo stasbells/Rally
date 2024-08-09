@@ -9,7 +9,7 @@ public class AnimateCarAlongSpline : MonoBehaviour
 {
     [SerializeField] private float _positionFromCenter;
 
-    private const float ScaleCalibration = 3f;
+    private const float ScaleCalibration = 5f;
     private const float MaxDistance = 1f;
 
     private Spline _spline;

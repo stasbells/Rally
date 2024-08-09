@@ -2,20 +2,24 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water_Swamp_01
   m_Shader: {fileID: 4800000, guid: 276a39a5a210b124885f0eff3e80f1f3, type: 3}
-  m_ShaderKeywords: 
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -131,6 +135,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _CausticDepthFade: 11.22
@@ -138,12 +143,12 @@ Material:
     - _CausticSpeed: 1
     - _ColourNoiseScale1: 0.019
     - _Cutoff: 0.5
-    - _Depth: 0.28
+    - _Depth: 0.62
     - _DetailNormalMapScale: 1
-    - _Distortion: 0.078
+    - _Distortion: 0
     - _Distortion1: 0.292
-    - _DistortionSpeed: 0.073
-    - _DistortionTiling: 0.33
+    - _DistortionSpeed: 0
+    - _DistortionTiling: 0
     - _DstBlend: 0
     - _Float4: 0.37
     - _FoamDepth: 0.42
@@ -151,35 +156,35 @@ Material:
     - _FoamFalloff: 0
     - _FoamFalloff1: 0
     - _FoamGlowMultiplier: 1
-    - _FoamShoreline: 0.42
+    - _FoamShoreline: 0
     - _FoamSize: 0.6
     - _FoamSize1: 0.019
-    - _FoamSmoothness: 1
+    - _FoamSmoothness: 0
     - _FoamSmoothness1: 0
-    - _FoamSpread: 0.6
+    - _FoamSpread: 10
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GlowDepth: 0.1
-    - _GlowFalloff: 0.1
+    - _GlowFalloff: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalScale: 0.088
+    - _NormalScale: 0
     - _NormalTiling: 0.15
-    - _NormalTiling2: 0.05
+    - _NormalTiling2: 0
     - _ODM: 0.02
     - _OcclusionStrength: 1
-    - _Opacity: 1
-    - _OpacityFalloff: 7.55
-    - _OpacityMin: 0.8
-    - _OverallFalloff: 0.35
+    - _Opacity: 0.738
+    - _OpacityFalloff: 24.92
+    - _OpacityMin: 0.703
+    - _OverallFalloff: 0
     - _Parallax: 0.02
-    - _ReflectionPower: 1
-    - _RippleSpeed: 0.028
-    - _ShallowFalloff: 1
-    - _Smoothness: 0.9
+    - _ReflectionPower: 0
+    - _RippleSpeed: 0
+    - _ShallowFalloff: -0.05
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
-    - _Specular: 0.013
+    - _Specular: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Tiling: 0.36
@@ -215,8 +220,8 @@ Material:
     - _WaveAmplitude: 0
     - _WaveDirection: 0
     - _WaveFoamOpacity: 0
-    - _WaveNoiseAmount: 2
-    - _WaveNoiseScale: 30
+    - _WaveNoiseAmount: 0
+    - _WaveNoiseScale: 0
     - _WaveSpeed: 0
     - _WaveTiling: 0.21
     - _WaveTiling1: 0.2
@@ -259,3 +264,4 @@ Material:
     - _WaterReallyDeepColor: {r: 0.24528301, g: 0.1842708, b: 0.11454253, a: 0}
     - _WaterShallowColor: {r: 0.3844467, g: 0.41509432, b: 0.24866499, a: 1}
     - _WaterShallowColor1: {r: 0.9607843, g: 0.7882353, b: 0.5764706, a: 0}
+  m_BuildTextureStacks: []

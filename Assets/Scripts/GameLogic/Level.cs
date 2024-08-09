@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using YG;
 
 public class Level : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Level : MonoBehaviour
     [SerializeField] private LapCounter _lapCounter;
     [SerializeField] private Speedometer _speedometer;
     [SerializeField] private OverheatWarning _overheatWarning;
+    [SerializeField] private Tutorial _tutorial;
 
     private AnimateCarAlongSpline _playerCar;
     private AnimateCarAlongSpline _botCar;
@@ -52,11 +54,16 @@ public class Level : MonoBehaviour
         _stopwatch.gameObject.SetActive(true);
         _lapCounter.gameObject.SetActive(true);
 
+        _tutorial.gameObject.SetActive(YandexGame.savesData.isFirstSession);
+
         _stopwatch.TimeStart();
 
         _playerCar.gameObject.SetActive(true);
         _botCar.gameObject.SetActive(true);
         _map.gameObject.SetActive(true);
+
+        _map.gameObject.GetComponentInChildren<Camera>().enabled = false;
+        _playerCar.gameObject.GetComponentInChildren<Camera>().enabled = false;
 
         _playerCar.SetContainer(_map.GetComponent<LoftRoad>().Container);
         _botCar.SetContainer(_map.GetComponent<LoftRoad>().Container);
@@ -87,11 +94,14 @@ public class Level : MonoBehaviour
 
         FinishResault()?.Invoke();
     }
-    
+
     private void Disable()
     {
         _countdown.gameObject.SetActive(false);
         _speedometer.gameObject.SetActive(false);
+
+        _map.gameObject.GetComponentInChildren<Camera>().enabled = true;
+        _playerCar.gameObject.GetComponentInChildren<Camera>().enabled = true;
 
         _map.gameObject.SetActive(false);
         _playerCar.gameObject.SetActive(false);

@@ -15,7 +15,7 @@ Material:
   - LOD_FADE_CROSSFADE
   m_InvalidKeywords: []
   m_LightmapFlags: 0
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -73,11 +73,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GustNoiseMap:
-        m_Texture: {fileID: 2800000, guid: 95228cb87bc1fcf4b8b99b626dcf102c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LOD_DitheringMap:
-        m_Texture: {fileID: 2800000, guid: 4199a601545ad164badaad1fe1733439, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeafAmbientOcclusion:
@@ -93,7 +93,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Leaves_NoiseTexture2:
-        m_Texture: {fileID: 2800000, guid: e0595e1df515fa64fa99e3017d4ace24, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -206,20 +206,20 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GustAmount: 0.102
+    - _GustAmount: 0
     - _GustFreq: 0.224
-    - _GustLargeFreq: 0.081
-    - _GustScale: 0.107
-    - _GustSmallFreq: 0.272
-    - _JitterAmount: 0.364
-    - _JitterFreq: 0.153
+    - _GustLargeFreq: 0
+    - _GustScale: 0
+    - _GustSmallFreq: 0
+    - _JitterAmount: 0
+    - _JitterFreq: 0
     - _LOD_FADE_CROSSFADE: 1
     - _LOD_FADE_CROSSFADE1: 1
     - _LOD_FADE_CROSSFADE2: 1
     - _LOD_FADE_CROSSFADE_in: 1
     - _LOD_FADE_CROSSFADE_out: 1
-    - _LeafBigNoiseAmount: 0.068
-    - _LeafBigNoiseScale: 3.87
+    - _LeafBigNoiseAmount: 0
+    - _LeafBigNoiseScale: 0
     - _LeafFlatColourSwitch: 0
     - _LeafMetallic: 0
     - _LeafNoiseAmount: 0.371
@@ -245,7 +245,7 @@ Material:
     - _SrcBlend: 1
     - _Tiling: 1
     - _Tint_Tiling: 0.5
-    - _TotalWindAmount: 0.5
+    - _TotalWindAmount: 0
     - _TrunkFlatColourSwitch: 0
     - _TrunkMetallic: 0
     - _TrunkNormalAmount: 0.5
@@ -260,7 +260,7 @@ Material:
     - _WindNoiseScale2: 0.5
     - _WindWorldScale: 0.08
     - _WindWorldScale1: 0.001
-    - _Y_multiplier: -0.44
+    - _Y_multiplier: 0
     - _ZWrite: 1
     - __dirty: 0
     - _leafNoiseScale: 1

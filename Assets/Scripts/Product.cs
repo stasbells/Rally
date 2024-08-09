@@ -6,8 +6,7 @@ public abstract class Product : MonoBehaviour
 {
     [SerializeField] private int _price;
     [SerializeField] private bool _isDefoult;
-
-    private bool _isBuyed = false;
+    [SerializeField] private bool _isBuyed = false;
 
     public int Price => _price;
     public bool IsBuyed => _isBuyed;

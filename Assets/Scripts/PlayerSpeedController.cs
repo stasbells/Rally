@@ -3,12 +3,6 @@ using UnityEngine;
 
 public class PlayerSpeedController : MonoBehaviour, ISpeedController
 {
-    [SerializeField] private float _maxSpeed;
-    [SerializeField] private float _acceleration;
-
-    private OverheatWarning _overheatWarning;
-    private PlayerInput _playerInput;
-
     private const float MinSpeed = 0f;
     private const float MaxSpeedFactor = 0.2f;
     private const float OverheatingFactor = 1.5f;
@@ -17,11 +11,16 @@ public class PlayerSpeedController : MonoBehaviour, ISpeedController
     private float _overheatingSpeedValue = 0.8f;
     private bool _isOverheating = false;
 
-    public float MaxSpeed => _maxSpeed;
+    private OverheatWarning _overheatWarning;
+    private PlayerInput _playerInput;
+
+    [field: SerializeField] public float MaxSpeed { get; private set; }
+    [field: SerializeField] public float Acceleration { get; private set; }
+    [field: SerializeField] public float OverheatingTime { get; private set; }
 
     private void Awake()
     {
-        _overheatingSpeedValue *= _maxSpeed;
+        _overheatingSpeedValue *= MaxSpeed;
         _playerInput = new PlayerInput();
     }
 
@@ -69,15 +68,15 @@ public class PlayerSpeedController : MonoBehaviour, ISpeedController
     {
         _counter += Time.deltaTime;
 
-        if (_counter > 3f)
+        if (_counter > OverheatingTime)
             _isOverheating = true;
     }
 
     public void SetOverheatWarning(OverheatWarning overheatWarning) => _overheatWarning = overheatWarning;
 
     private float Increase(float speed, float factor = 1f) =>
-        Math.Clamp(speed + _acceleration * factor * Time.deltaTime, MinSpeed, _maxSpeed);
+        Math.Clamp(speed + Acceleration * factor * Time.deltaTime, MinSpeed, MaxSpeed);
 
     private float Decrease(float speed, float factor = 1f) =>
-        Math.Clamp(speed - _acceleration * factor * Time.deltaTime, MinSpeed, _maxSpeed);
+        Math.Clamp(speed - Acceleration * factor * Time.deltaTime, MinSpeed, MaxSpeed);
 }

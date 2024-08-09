@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class MapSelector : MonoBehaviour
 {
-    [SerializeField] Screen _screen;
-    [SerializeField] Image _imageLock;
-    [SerializeField] Container _mapStorage;
-    [SerializeField] Button _nextButton;
-    [SerializeField] Button _prevButton;
+    [SerializeField] private Screen _screen;
+    [SerializeField] private Image _imageLock;
+    [SerializeField] private Container _mapStorage;
+    [SerializeField] private Button _nextButton;
+    [SerializeField] private Button _prevButton;
 
     private int _currentIndex;
     private Map _currentMap;
@@ -48,9 +48,9 @@ public class MapSelector : MonoBehaviour
             ShowInfo();
     }
 
-    public void ChangeMap(int change)
+    public void ChangeMap(int changer)
     {
-        _currentIndex += change;
+        _currentIndex += changer;
         SelectMap(_currentIndex);
     }
 

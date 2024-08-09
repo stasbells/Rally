@@ -1,16 +1,19 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CarSelector : MonoBehaviour
 {
-    [SerializeField] Screen _screen;
-    [SerializeField] Image _imageLock;
-    [SerializeField] Container _garage;
-    [SerializeField] Button _nextButton;
-    [SerializeField] Button _prevButton;
+    [SerializeField] private Screen _screen;
+    [SerializeField] private Image _imageLock;
+    [SerializeField] private Container _garage;
+    [SerializeField] private Button _nextButton;
+    [SerializeField] private Button _prevButton;
 
     private int _currentCarIndex;
     private Car _currentCar;
+
+    public event UnityAction<Car> CarChanged;
 
     private void Awake()
     {
@@ -44,6 +47,8 @@ public class CarSelector : MonoBehaviour
 
         _currentCar = _garage.GetItem(index).GetComponent<Car>();
 
+        CarChanged?.Invoke(_currentCar);
+
         if (_screen.GetComponent<CanvasGroup>().alpha == 1f)
             ShowInfo();
     }
@@ -53,10 +58,9 @@ public class CarSelector : MonoBehaviour
         _currentCarIndex += change;
         SelectCar(_currentCarIndex);
     }
-
-    private void ShowInfo() => _imageLock.gameObject.SetActive(!_currentCar.IsBuyed);
-
-    public Car GetCurrentCar() => _currentCar;
+    public Product GetCurrentProduct() => _currentCar;
 
     public void PayCar() => _garage.BuyItem(_currentCar);
+
+    private void ShowInfo() => _imageLock.gameObject.SetActive(!_currentCar.IsBuyed);
 }

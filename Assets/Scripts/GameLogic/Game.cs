@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private GarageScreen _garageScreen;
     [SerializeField] private SettingsScreen _settingsScreen;
+    [SerializeField] private LeaderboardScreen _leaderboardScreen;
     [SerializeField] private FinishScreen _finishScreen;
     [SerializeField] private LapCounter _lapCounter;
 
@@ -19,10 +20,12 @@ public class Game : MonoBehaviour
         _menuScreen.PlayButtonClick += OnStartButtonClick;
         _menuScreen.GarageButtonClick += OnGarageButtonClick;
         _menuScreen.SettingsButtonClick += OnSettingsButtonClick;
+        _menuScreen.LeaderboardButtonClick += OnLeaderbordButtonClick;
         _startScreen.StartButtonClick += OnPlayButtonClick;
         _startScreen.BackToMenuButtonClick += OnMenuButtonClick;
         _garageScreen.BackToMenuButtonClick += OnMenuButtonClick;
         _settingsScreen.BackToMenuButtonClick += OnMenuButtonClick;
+        _leaderboardScreen.BackToMenuButtonClick += OnMenuButtonClick;
         _finishScreen.RestartButtonClick += OnRestartButtonClick;
         _lapCounter.Finised += OnFinish;
     }
@@ -32,10 +35,12 @@ public class Game : MonoBehaviour
         _menuScreen.PlayButtonClick -= OnStartButtonClick;
         _menuScreen.GarageButtonClick -= OnGarageButtonClick;
         _menuScreen.SettingsButtonClick -= OnSettingsButtonClick;
+        _menuScreen.LeaderboardButtonClick -= OnLeaderbordButtonClick;
         _startScreen.StartButtonClick -= OnPlayButtonClick;
         _startScreen.BackToMenuButtonClick -= OnMenuButtonClick;
         _garageScreen.BackToMenuButtonClick -= OnMenuButtonClick;
         _settingsScreen.BackToMenuButtonClick -= OnMenuButtonClick;
+        _leaderboardScreen.BackToMenuButtonClick -= OnMenuButtonClick;
         _finishScreen.RestartButtonClick -= OnRestartButtonClick;
         _lapCounter.Finised -= OnFinish;
     }
@@ -46,6 +51,7 @@ public class Game : MonoBehaviour
         _startScreen.Close();
         _finishScreen.Close();
         _garageScreen.Close();
+        _leaderboardScreen.Close();
         _settingsScreen.Close();
     }
 
@@ -64,6 +70,7 @@ public class Game : MonoBehaviour
             _startScreen.Close();
 
         _settingsScreen.Close();
+        _leaderboardScreen.Close();
         _menuScreen.Open();
     }
 
@@ -77,6 +84,12 @@ public class Game : MonoBehaviour
     {
         _menuScreen.Close();
         _settingsScreen.Open();
+    }
+
+    private void OnLeaderbordButtonClick() 
+    {
+        _menuScreen.Close();
+        _leaderboardScreen.Open();
     }
 
     private void OnPlayButtonClick()

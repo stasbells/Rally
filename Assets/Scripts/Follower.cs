@@ -7,12 +7,10 @@ public class Follower : MonoBehaviour
 
     private Transform _target;
     private Transform _transform;
-    private float _defaultWidth;
 
-    private void Awake()
+    private void Start()
     {
         _transform = transform;
-        _defaultWidth = Camera.main.orthographicSize * Camera.main.aspect;
     }
 
     public void SetTarget(Transform target)
@@ -22,8 +20,6 @@ public class Follower : MonoBehaviour
 
     private void Update()
     {
-        Camera.main.orthographicSize = _defaultWidth / Camera.main.aspect;
-
         if (_target != null)
             _transform.position = Vector3.Lerp(_transform.position, _target.position + _offset, Time.deltaTime * _smooth);
     }

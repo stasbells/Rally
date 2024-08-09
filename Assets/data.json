@@ -1,6 +1,6 @@
 {
     "WalletData": {
-        "Money": 19438
+        "Money": 100000
     },
     "GarageData": {
         "Items": [
@@ -8,13 +8,31 @@
                 "IsBuyed": true
             },
             {
-                "IsBuyed": true
+                "IsBuyed": false
             },
             {
-                "IsBuyed": true
+                "IsBuyed": false
             },
             {
-                "IsBuyed": true
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": false
             }
         ]
     },
@@ -28,6 +46,70 @@
             },
             {
                 "IsBuyed": true
+            }
+        ]
+    },
+    "ColorsData": {
+        "Colors": [
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
+            },
+            {
+                "IsBuyed": true
+            },
+            {
+                "IsBuyed": false
             }
         ]
     }

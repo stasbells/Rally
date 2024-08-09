@@ -1,24 +1,18 @@
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(CanvasGroup))]
 public abstract class Screen : MonoBehaviour
 {
-    [SerializeField] protected CanvasGroup CanvasGroup;
-    [SerializeField] protected Button Button;
+    protected CanvasGroup CanvasGroup;
 
-    private void OnEnable()
+    private void Awake()
     {
-        Button.onClick.AddListener(OnButtonClick);
+        CanvasGroup = GetComponent<CanvasGroup>();
     }
-
-    private void OnDisable()
-    {
-        Button.onClick.RemoveListener(OnButtonClick);
-    }
-
-    protected abstract void OnButtonClick();
 
     public abstract void Open();
 
     public abstract void Close();
+
+    protected abstract void SetInteractable(bool value);
 }

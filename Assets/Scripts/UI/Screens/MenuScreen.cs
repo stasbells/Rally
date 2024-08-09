@@ -4,26 +4,17 @@ using UnityEngine.UI;
 
 public class MenuScreen : Screen
 {
+    [SerializeField] private Button _playMenuButton;
     [SerializeField] private Button _gargeMenuButton;
     [SerializeField] private Button _settingsMenuButton;
+    [SerializeField] private Button _leaderboardMenuButton;
 
     public event UnityAction PlayButtonClick;
     public event UnityAction GarageButtonClick;
     public event UnityAction SettingsButtonClick;
+    public event UnityAction LeaderboardButtonClick;
 
-    public override void Close()
-    {
-        CanvasGroup.alpha = 0f;
-        SetInterectable(false);
-    }
-
-    public override void Open()
-    {
-        CanvasGroup.alpha = 1f;
-        SetInterectable(true);
-    }
-
-    protected override void OnButtonClick()
+    public void OnPlayButtonClick()
     {
         PlayButtonClick?.Invoke();
     }
@@ -38,13 +29,35 @@ public class MenuScreen : Screen
         SettingsButtonClick?.Invoke();
     }
 
-    public void SetInterectable(bool value)
+    public void OnLeaderboardButtonClick()
     {
-        Button.interactable = value;
-        Button.image.raycastTarget = value;
+        LeaderboardButtonClick?.Invoke();
+    }
+
+    public override void Open()
+    {
+        CanvasGroup.alpha = 1f;
+        SetInteractable(true);
+    }
+
+    public override void Close()
+    {
+        CanvasGroup.alpha = 0f;
+        SetInteractable(false);
+    }
+
+    protected override void SetInteractable(bool value)
+    {
+        _playMenuButton.interactable = value;
+        _playMenuButton.image.raycastTarget = value;
+
         _gargeMenuButton.interactable = value;
         _gargeMenuButton.image.raycastTarget = value;
+
         _settingsMenuButton.interactable = value;
         _settingsMenuButton.image.raycastTarget = value;
+
+        _leaderboardMenuButton.interactable = value;
+        _leaderboardMenuButton.image.raycastTarget = value;
     }
 }

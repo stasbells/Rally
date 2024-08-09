@@ -2,12 +2,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class FinishScreen : Screen 
+public class FinishScreen : Screen
 {
+    [SerializeField] private Button _restartButton;
+    [SerializeField] private Button _rewardButton;
     [SerializeField] private Image _winnerBoard;
     [SerializeField] private Image _loserBoard;
-
-    private Level _level;
+    [SerializeField] private Level _level;
 
     public event UnityAction RestartButtonClick;
 
@@ -15,41 +16,41 @@ public class FinishScreen : Screen
     {
         _level.Won += ShowWinnerBord;
         _level.Lost += ShowLoserBoard;
-        Button.onClick.AddListener(OnButtonClick);
     }
 
     private void OnDisable()
     {
         _level.Won -= ShowWinnerBord;
         _level.Lost -= ShowLoserBoard;
-        Button.onClick.RemoveListener(OnButtonClick);
     }
 
-    private void Awake()
+    public void OnRestartButtonClick()
     {
-        _level = FindFirstObjectByType<Level>();
-    }
-
-    public override void Close()
-    {
-        CanvasGroup.alpha = 0f;
-        Button.interactable = false;
-        Button.image.raycastTarget = false;
-
-        _winnerBoard.gameObject.SetActive(false);
-        _loserBoard.gameObject.SetActive(false);
+        RestartButtonClick?.Invoke();
     }
 
     public override void Open()
     {
         CanvasGroup.alpha = 1f;
-        Button.interactable = true;
-        Button.image.raycastTarget = true;
+        SetInteractable(true);
     }
 
-    protected override void OnButtonClick()
+    public override void Close()
     {
-        RestartButtonClick?.Invoke();
+        CanvasGroup.alpha = 0f;
+        SetInteractable(false);
+    }
+
+    protected override void SetInteractable(bool value)
+    {
+        _rewardButton.interactable = value;
+        _rewardButton.image.raycastTarget = value;
+
+        _restartButton.interactable = value;
+        _restartButton.image.raycastTarget = value;
+
+        _winnerBoard.gameObject.SetActive(false);
+        _loserBoard.gameObject.SetActive(false);
     }
 
     private void ShowWinnerBord()

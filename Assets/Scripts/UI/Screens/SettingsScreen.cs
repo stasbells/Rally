@@ -4,17 +4,15 @@ using UnityEngine.UI;
 
 public class SettingsScreen : Screen
 {
-    [SerializeField] private Button _laguageButton;
-
+    [SerializeField] private Button _backToMenuButton;
     [SerializeField] private Slider _volumeSlider;
     [SerializeField] private Slider _soundSlider;
 
     public event UnityAction BackToMenuButtonClick;
 
-    public override void Close()
+    public void OnBackToMenuButtonClick()
     {
-        CanvasGroup.alpha = 0f;
-        SetInteractable(false);
+        BackToMenuButtonClick?.Invoke();
     }
 
     public override void Open()
@@ -23,21 +21,18 @@ public class SettingsScreen : Screen
         SetInteractable(true);
     }
 
-    protected override void OnButtonClick()
+    public override void Close()
     {
-        BackToMenuButtonClick?.Invoke();
+        CanvasGroup.alpha = 0f;
+        SetInteractable(false);
     }
 
-    private void SetInteractable(bool value)
+    protected override void SetInteractable(bool value)
     {
-        Button.interactable = value;
-        Button.image.raycastTarget = value;
-
-        _laguageButton.interactable = value;
-        _laguageButton.image.raycastTarget = value;
+        _backToMenuButton.interactable = value;
+        _backToMenuButton.image.raycastTarget = value;
 
         _volumeSlider.gameObject.SetActive(value);
-
         _soundSlider.gameObject.SetActive(value);
     }
 }

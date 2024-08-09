@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class StartScreen : Screen
 {
+    [SerializeField] private Button _startButton;
+    [SerializeField] private Button _backToMenuButton;
+    [SerializeField] private Button _buyMapButton;
     [SerializeField] private TMP_Text _moneyCount;
     [SerializeField] private CarSelector _carSelector;
     [SerializeField] private MapSelector _mapSelector;
     [SerializeField] private Level _level;
-    [SerializeField] private Button _buyMapButton;
-    [SerializeField] private Button _backToMenuButton;
     [SerializeField] private Container _garage;
     [SerializeField] private Container _botStorage;
 
@@ -24,26 +25,12 @@ public class StartScreen : Screen
 
         if (CanvasGroup.alpha == 1f)
         {
-            SetStartButtonInteracteble(_carSelector.GetCurrentCar().IsBuyed && _mapSelector.GetCurrentMap().IsBuyed);
+            SetStartButtonInteracteble(_carSelector.GetCurrentProduct().IsBuyed && _mapSelector.GetCurrentMap().IsBuyed);
             BuyMapButtonView(!_mapSelector.GetCurrentMap().IsBuyed);
         }
     }
 
-    public override void Close()
-    {
-        _level.SetComponents(_mapSelector.GetCurrentMap(), _carSelector.GetCurrentCar(), _botStorage.GetItem(0).GetComponent<Bot>());
-
-        CanvasGroup.alpha = 0f;
-        SetInterectable(false);
-    }
-
-    public override void Open()
-    {
-        CanvasGroup.alpha = 1f;
-        SetInterectable(true);
-    }
-
-    protected override void OnButtonClick()
+    public void OnStartButtonClick()
     {
         StartButtonClick?.Invoke();
     }
@@ -62,19 +49,21 @@ public class StartScreen : Screen
             _buyMapButton.gameObject.GetComponentInChildren<TMP_Text>().text = _mapSelector.GetCurrentMap().Price.ToString();
     }
 
-    private void SetStartButtonInteracteble(bool value)
+    public override void Open()
     {
-        Button.interactable = value;
-        Button.image.raycastTarget = value;
+        CanvasGroup.alpha = 1f;
+        SetInteractable(true);
     }
 
-    private void SetBuyButtonInterectable(bool value)
+    public override void Close()
     {
-        _buyMapButton.interactable = value;
-        _buyMapButton.image.raycastTarget = value;
+        _level.SetComponents(_mapSelector.GetCurrentMap(), _carSelector.GetCurrentProduct().GetComponent<Car>(), _botStorage.GetItem(0).GetComponent<Bot>());
+
+        CanvasGroup.alpha = 0f;
+        SetInteractable(false);
     }
 
-    private void SetInterectable(bool value)
+    protected override void SetInteractable(bool value)
     {
         SetStartButtonInteracteble(value);
 
@@ -83,5 +72,17 @@ public class StartScreen : Screen
 
         _carSelector.gameObject.SetActive(value);
         _mapSelector.gameObject.SetActive(value);
+    }
+
+    private void SetStartButtonInteracteble(bool value)
+    {
+        _startButton.interactable = value;
+        _startButton.image.raycastTarget = value;
+    }
+
+    private void SetBuyButtonInterectable(bool value)
+    {
+        _buyMapButton.interactable = value;
+        _buyMapButton.image.raycastTarget = value;
     }
 }

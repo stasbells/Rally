@@ -6,7 +6,7 @@ public struct ContainerData
 {
     public ProductData[] Items;
 
-    public ContainerData (IReadOnlyList<Product> items)
+    public ContainerData(IReadOnlyList<Product> items)
     {
         Items = new ProductData[items.Count];
 

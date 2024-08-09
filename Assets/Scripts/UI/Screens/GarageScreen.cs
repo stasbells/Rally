@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class GarageScreen : Screen
 {
+    [SerializeField] private Button _backToMenuButton;
+    [SerializeField] private Button _buyCarButton;
+    [SerializeField] private Button _buyColorButton;
+    [SerializeField] private CarSelector _carSelector;
+    [SerializeField] private ColorSelector _colorSelector;
     [SerializeField] private TMP_Text _moneyCount;
     [SerializeField] private Container _garage;
-    [SerializeField] private CarSelector _carSelector;
-    [SerializeField] private Button _backToMenuButton;
-    [SerializeField] private Button _buyCar;
 
-    public event UnityAction StartButtonClick;
     public event UnityAction BackToMenuButtonClick;
 
     private void Update()
@@ -20,24 +21,10 @@ public class GarageScreen : Screen
             _moneyCount.text = _garage.WalletCount.ToString();
 
         if (CanvasGroup.alpha == 1f)
-            BuyCarButtonView(!_carSelector.GetCurrentCar().IsBuyed);
-    }
-
-    public override void Close()
-    {
-        CanvasGroup.alpha = 0f;
-        SetInterectable(false);
-    }
-
-    public override void Open()
-    {
-        CanvasGroup.alpha = 1f;
-        SetInterectable(true);
-    }
-
-    protected override void OnButtonClick()
-    {
-        StartButtonClick?.Invoke();
+        {
+            BuyButtonView(_buyCarButton, !_carSelector.GetCurrentProduct().IsBuyed);
+            BuyColorButtonView(_buyColorButton, !_colorSelector.GetCurrentProduct().IsBuyed);
+        }
     }
 
     public void OnMenuButtonClick()
@@ -45,32 +32,56 @@ public class GarageScreen : Screen
         BackToMenuButtonClick?.Invoke();
     }
 
-    private void BuyCarButtonView(bool value)
+    public override void Open()
     {
-        _buyCar.gameObject.SetActive(value);
-        SetBuyButtonInterectable(_carSelector.GetCurrentCar().Price <= _garage.WalletCount);
-
-        if (_buyCar.gameObject.activeSelf)
-            _buyCar.gameObject.GetComponentInChildren<TMP_Text>().text = _carSelector.GetCurrentCar().Price.ToString();
+        CanvasGroup.alpha = 1f;
+        SetInteractable(true);
     }
 
-    private void SetBuyButtonInterectable(bool value)
+    public override void Close()
     {
-        _buyCar.interactable = value;
-        _buyCar.image.raycastTarget = value;
+        CanvasGroup.alpha = 0f;
+        SetInteractable(false);
     }
 
-    private void SetInterectable(bool value)
+    protected override void SetInteractable(bool value)
     {
-        Button.interactable = value;
-        Button.image.raycastTarget = value;
+        _buyColorButton.interactable = value;
+        _buyColorButton.image.raycastTarget = value;
 
-        _buyCar.interactable = value;
-        _buyCar.image.raycastTarget = value;
+        _buyCarButton.interactable = value;
+        _buyCarButton.image.raycastTarget = value;
 
         _backToMenuButton.interactable = value;
         _backToMenuButton.image.raycastTarget = value;
 
         _carSelector.gameObject.SetActive(value);
+        _colorSelector.gameObject.SetActive(value);
+    }
+
+    private void BuyButtonView(Button button, bool value)
+    {
+        button.gameObject.SetActive(value);
+        SetButtonInterectable(button, _carSelector.GetCurrentProduct().Price <= _garage.WalletCount);
+
+        if (button.gameObject.activeSelf)
+            button.gameObject.GetComponentInChildren<TMP_Text>().text =
+                _carSelector.GetCurrentProduct().Price.ToString();
+    }
+
+    private void BuyColorButtonView(Button button, bool value)
+    {
+        button.gameObject.SetActive(value);
+        SetButtonInterectable(button, _colorSelector.GetCurrentProduct().Price <= _garage.WalletCount);
+
+        if (button.gameObject.activeSelf)
+            button.gameObject.GetComponentInChildren<TMP_Text>().text =
+                _colorSelector.GetCurrentProduct().Price.ToString();
+    }
+
+    private void SetButtonInterectable(Button button, bool value)
+    {
+        button.interactable = value;
+        button.image.raycastTarget = value;
     }
 }

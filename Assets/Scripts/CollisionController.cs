@@ -11,9 +11,9 @@ public class CollisionController : MonoBehaviour
         _animateCarAlongSpline = GetComponentInParent<AnimateCarAlongSpline>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.GetComponent<Rigidbody>())
-            other.GetComponent<Rigidbody>().AddForce(_animateCarAlongSpline.CurrentSpeed / _impactForce * (transform.forward + Vector3.up));
+        collision.gameObject.GetComponent<Rigidbody>()?.AddForce
+            (_animateCarAlongSpline.CurrentSpeed * _impactForce * (transform.forward + Vector3.up));
     }
 }

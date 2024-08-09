@@ -4,18 +4,58 @@ using UnityEngine;
 public class Container : MonoBehaviour
 {
     [SerializeField] private List<Product> _prefabs;
-    [SerializeField] private Wallet _wallet;
 
+    private Wallet _wallet;
     private List<Product> _items;
 
+    public int CurrentItemIndex { get; private set; } = 0;
     public int ItemsCount => _prefabs.Count;
     public int WalletCount => _wallet.Money;
     public IReadOnlyList<Product> Items => _items;
 
     private void Awake()
     {
+        _wallet = FindFirstObjectByType<Wallet>();
+
         if (_items == null)
             Initialize();
+    }
+
+    public Product GetItem(int index) => _items[index];
+
+    public void SetCurrentIndex(int index) => CurrentItemIndex = index;
+
+    public void BuyItem(Product item)
+    {
+        item.SetBuyed();
+        _wallet.Pay(item.Price);
+    }
+
+    public void LoadData(ContainerData data)
+    {
+        if (data.Items != null)
+        {
+            for (int i = 0; i < data.Items.Length; i++)
+                _items[i].LoadData(data.Items[i]);
+        }
+    }
+
+    public void LoadData(ColorsData data)
+    {
+        if (data.Colors != null)
+        {
+            int index = 0;
+
+            for (int i = 0; i < _items.Count; i++)
+            {
+                Container car = _items[i].GetComponentInChildren<Container>();
+
+                for (int j = 0; j < car.Items.Count; j++)
+                {
+                    car.GetItem(j).LoadData(data.Colors[index++]);
+                }
+            }
+        }
     }
 
     private void Initialize()
@@ -26,27 +66,10 @@ public class Container : MonoBehaviour
         {
             var item = Instantiate(_prefabs[i]);
 
-            item.gameObject.SetActive(false);
+            item.gameObject.SetActive(i == 0 && item.GetComponent<CarColor>());
             item.transform.SetParent(transform, false);
 
             _items.Add(item);
-        }
-    }
-
-    public Product GetItem(int index) => _items[index];
-
-    public void BuyItem(Product item)
-    {
-        item.SetBuyed();
-        _wallet.Pay(item.Price);
-    }
-
-    public void LoadData(ContainerData data)
-    {
-        if(data.Items != null)
-        {
-            for (int i = 0; i < data.Items.Length; i++)
-                _items[i].LoadData(data.Items[i]);
         }
     }
 }

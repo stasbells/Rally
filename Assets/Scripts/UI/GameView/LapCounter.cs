@@ -15,7 +15,7 @@ public class LapCounter : MonoBehaviour
     public event UnityAction Finised;
     public event UnityAction LapComplete;
 
-    private void Awake()
+    private void OnEnable()
     {
         _maxLapText.text = Constants.LapCount.ToString();
     }
