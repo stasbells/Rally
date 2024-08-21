@@ -7,10 +7,10 @@ public class RewardCalculator : MonoBehaviour
     [SerializeField] private TMP_Text _rewardForWinningText;
     [SerializeField] private TMP_Text _rewardForTimeText;
 
-    [SerializeField] private Level _level;
-    [SerializeField] private Wallet _wallet;
+    [SerializeField] private LevelCollector _level;
     [SerializeField] private LapCounter _counter;
     [SerializeField] private Stopwatch _stopwatch;
+    [SerializeField] private Wallet _wallet;
 
     [SerializeField] private float _rewardIndex;
 
@@ -25,7 +25,7 @@ public class RewardCalculator : MonoBehaviour
         _counter.Finised += GetReward;
         YandexGame.RewardVideoEvent += Rewarded;
     }
-    
+
     private void OnDisable()
     {
         _counter.Finised -= GetReward;

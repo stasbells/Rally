@@ -5,23 +5,12 @@ public class Duster : MonoBehaviour
     [SerializeField] private ParticleSystem _rightWheel;
     [SerializeField] private ParticleSystem _leftWheel;
 
-    private Level _level;
-
-    private void Awake()
-    {
-        _level = FindAnyObjectByType<Level>();
-    }
-
-    private void Update()
-    {
-        if (_level.IsDone && _leftWheel.isStopped)
-            OnPlay();
-    }
-
     private void OnEnable()
     {
-        if (_leftWheel.isPlaying)
+        if (FindFirstObjectByType<StartScreen>())
             OnStop();
+        else
+            OnPlay();
     }
 
     private void OnDisable()

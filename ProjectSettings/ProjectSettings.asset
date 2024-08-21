@@ -156,7 +156,9 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.IJunior.RallyLegends
     Standalone: com.IJunior.Rally-Legends
+    iPhone: com.IJunior.Rally-Legends
   buildNumber:
     Bratwurst: 0
     Standalone: 0
@@ -185,8 +187,8 @@ PlayerSettings:
   tvOSSdkVersion: 0
   tvOSRequireExtendedGameController: 0
   tvOSTargetOSVersionString: 12.0
-  bratwurstSdkVersion: 0
-  bratwurstTargetOSVersionString: 16.4
+  VisionOSSdkVersion: 0
+  VisionOSTargetOSVersionString: 1.0
   uIPrerenderedIcon: 0
   uIRequiresPersistentWiFi: 0
   uIRequiresFullScreen: 1
@@ -234,10 +236,10 @@ PlayerSettings:
   appleDeveloperTeamID: 
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
-  bratwurstManualSigningProvisioningProfileID: 
+  VisionOSManualSigningProvisioningProfileID: 
   iOSManualSigningProvisioningProfileType: 0
   tvOSManualSigningProvisioningProfileType: 0
-  bratwurstManualSigningProvisioningProfileType: 0
+  VisionOSManualSigningProvisioningProfileType: 0
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 0
   iOSAutomaticallyDetectAndAddCapabilities: 1
@@ -537,7 +539,7 @@ PlayerSettings:
     m_Automatic: 1
   - m_BuildTarget: WebGLSupport
     m_APIs: 0b000000
-    m_Automatic: 1
+    m_Automatic: 0
   m_BuildTargetVRSettings:
   - m_BuildTarget: Standalone
     m_Enabled: 0
@@ -573,7 +575,12 @@ PlayerSettings:
     m_EncodingQuality: 1
   - m_BuildTarget: tvOS
     m_EncodingQuality: 1
-  m_BuildTargetGroupLightmapSettings: []
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 0
+  m_BuildTargetGroupLightmapSettings:
+  - m_BuildTarget: WebGL
+    m_TextureStreamingEnabled: 1
+    m_TextureStreamingPriority: 0
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding:
   - m_BuildTarget: Android

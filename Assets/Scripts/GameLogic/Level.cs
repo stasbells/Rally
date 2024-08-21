@@ -4,7 +4,7 @@ using YG;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] private Game _game;
+    [SerializeField] private GameMenu _game;
     [SerializeField] private Stopwatch _stopwatch;
     [SerializeField] private Countdown _countdown;
     [SerializeField] private LapCounter _lapCounter;

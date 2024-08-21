@@ -50,13 +50,13 @@ GraphicsSettings:
       renderingPath: 1
       hdrMode: 1
       realtimeGICPUUsage: 25
-      useReflectionProbeBoxProjection: 1
-      useReflectionProbeBlending: 1
+      useReflectionProbeBoxProjection: 0
+      useReflectionProbeBlending: 0
       useHDR: 0
-      useDetailNormalMap: 1
+      useDetailNormalMap: 0
       useCascadedShadowMaps: 0
       prefer32BitShadowMaps: 0
-      enableLPPV: 1
+      enableLPPV: 0
       useDitherMaskForAlphaBlendedShadows: 0
     m_Automatic: 0
   - serializedVersion: 5
@@ -67,13 +67,13 @@ GraphicsSettings:
       renderingPath: 1
       hdrMode: 1
       realtimeGICPUUsage: 25
-      useReflectionProbeBoxProjection: 1
-      useReflectionProbeBlending: 1
+      useReflectionProbeBoxProjection: 0
+      useReflectionProbeBlending: 0
       useHDR: 0
-      useDetailNormalMap: 1
+      useDetailNormalMap: 0
       useCascadedShadowMaps: 0
       prefer32BitShadowMaps: 0
-      enableLPPV: 1
+      enableLPPV: 0
       useDitherMaskForAlphaBlendedShadows: 0
     m_Automatic: 0
   - serializedVersion: 5
@@ -84,13 +84,13 @@ GraphicsSettings:
       renderingPath: 1
       hdrMode: 1
       realtimeGICPUUsage: 25
-      useReflectionProbeBoxProjection: 1
-      useReflectionProbeBlending: 1
+      useReflectionProbeBoxProjection: 0
+      useReflectionProbeBlending: 0
       useHDR: 0
-      useDetailNormalMap: 1
+      useDetailNormalMap: 0
       useCascadedShadowMaps: 0
       prefer32BitShadowMaps: 0
-      enableLPPV: 1
+      enableLPPV: 0
       useDitherMaskForAlphaBlendedShadows: 0
     m_Automatic: 0
   m_LightmapStripping: 0

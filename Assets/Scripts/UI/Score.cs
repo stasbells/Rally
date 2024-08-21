@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private Game _game;
+    [SerializeField] private GameMenu _game;
     [SerializeField] private Car _player;
     [SerializeField] private Text _text;
     [SerializeField] private CanvasGroup _canvasGroup;

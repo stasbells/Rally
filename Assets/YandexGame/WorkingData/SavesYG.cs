@@ -18,9 +18,13 @@ namespace YG
 
         // Ваши сохранения
 
-        public string jsonSavedData;
+        public string JsonSavedData;
 
-        // ...
+        public int Money;
+        public int MapIndex;
+        public int CarIndex;
+        public int BotIndex;
+        public int ColorIndex;
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 

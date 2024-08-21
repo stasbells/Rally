@@ -11,7 +11,6 @@ public class StartScreen : Screen
     [SerializeField] private TMP_Text _moneyCount;
     [SerializeField] private CarSelector _carSelector;
     [SerializeField] private MapSelector _mapSelector;
-    [SerializeField] private Level _level;
     [SerializeField] private Container _garage;
     [SerializeField] private Container _botStorage;
 
@@ -57,8 +56,6 @@ public class StartScreen : Screen
 
     public override void Close()
     {
-        _level.SetComponents(_mapSelector.GetCurrentMap(), _carSelector.GetCurrentProduct().GetComponent<Car>(), _botStorage.GetItem(0).GetComponent<Bot>());
-
         CanvasGroup.alpha = 0f;
         SetInteractable(false);
     }

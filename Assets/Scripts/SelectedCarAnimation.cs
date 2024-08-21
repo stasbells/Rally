@@ -8,13 +8,16 @@ public class SelectedCarAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        _startScreenAlpha = FindFirstObjectByType<StartScreen>().GetComponent<CanvasGroup>().alpha;
-        _garageScreenAlpha = FindFirstObjectByType<GarageScreen>().GetComponent<CanvasGroup>().alpha;
+        if (FindFirstObjectByType<StartScreen>())
+        {
+            _startScreenAlpha = FindFirstObjectByType<StartScreen>().GetComponent<CanvasGroup>().alpha;
+            _garageScreenAlpha = FindFirstObjectByType<GarageScreen>().GetComponent<CanvasGroup>().alpha;
+        }
     }
 
     private void Update()
     {
-        if (_garageScreenAlpha == 1f || _startScreenAlpha == 1f)        
-            transform.RotateAround(gameObject.transform.position, Vector3.up, 20 * Time.deltaTime);      
+        if (_garageScreenAlpha == 1f || _startScreenAlpha == 1f)
+            transform.RotateAround(gameObject.transform.position, Vector3.up, 20 * Time.deltaTime);
     }
 }

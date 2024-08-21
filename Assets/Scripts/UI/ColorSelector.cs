@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class ColorSelector : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ColorSelector : MonoBehaviour
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _prevButton;
     [SerializeField] private CarSelector _carSelector;
+    [SerializeField] private Image _colorImage;
 
     private Car _curentCar;
     private CarColor _currentColor;
@@ -55,6 +57,7 @@ public class ColorSelector : MonoBehaviour
             _colors.GetItem(i).gameObject.SetActive(i == index);
 
         _currentColor = _colors.GetItem(index).GetComponent<CarColor>();
+        _colorImage.sprite = _currentColor.GetComponentInChildren<Image>().sprite;
         _colors.SetCurrentIndex(index);
 
         if (_garageScreen.GetComponent<CanvasGroup>().alpha == 1f)

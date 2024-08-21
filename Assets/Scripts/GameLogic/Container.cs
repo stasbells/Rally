@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +32,17 @@ public class Container : MonoBehaviour
         _wallet.Pay(item.Price);
     }
 
+    public int TryGetIndexOfActiveProduct()
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if(_items[i].gameObject.activeSelf)
+                return i;
+        }
+
+        return -1;
+    }
+
     public void LoadData(ContainerData data)
     {
         if (data.Items != null)
@@ -58,6 +70,15 @@ public class Container : MonoBehaviour
         }
     }
 
+    public void DeleteAllExcept(Product product)
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (_items[i] != product)
+                Destroy(_items[i].gameObject);
+        }
+    }
+
     private void Initialize()
     {
         _items = new List<Product>();
@@ -66,7 +87,7 @@ public class Container : MonoBehaviour
         {
             var item = Instantiate(_prefabs[i]);
 
-            item.gameObject.SetActive(i == 0 && item.GetComponent<CarColor>());
+            item.gameObject.SetActive(i == 0 && item.GetComponent<CarColor>() && FindFirstObjectByType<StartScreen>());
             item.transform.SetParent(transform, false);
 
             _items.Add(item);

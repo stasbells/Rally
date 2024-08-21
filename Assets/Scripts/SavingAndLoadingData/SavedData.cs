@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using YG;
 
@@ -12,7 +13,7 @@ public class SavedData : MonoBehaviour
     //[SerializeField] private string _savePath;
     //[SerializeField] private string _saveFileName = "data.json";
 
-    private void Awake()
+    private void Start()
     {
         //#if UNITY_ANDROID && !UNITY_EDITOR
         // _savePath = Path.Combine(Application.persistentDataPath, _saveFileName);
@@ -53,7 +54,7 @@ public class SavedData : MonoBehaviour
 
         //File.WriteAllText(_savePath, contents: jsonSavedData);
 
-        YandexGame.savesData.jsonSavedData = jsonSavedData;
+        YandexGame.savesData.JsonSavedData = jsonSavedData;
 
         YandexGame.SaveProgress();
     }
@@ -65,10 +66,10 @@ public class SavedData : MonoBehaviour
 
         //string jsonSavedData = File.ReadAllText(_savePath);
 
-        if (YandexGame.savesData.jsonSavedData == null)
+        if (YandexGame.savesData.JsonSavedData == null)
             return;
 
-        string jsonSavedData = YandexGame.savesData.jsonSavedData;
+        string jsonSavedData = YandexGame.savesData.JsonSavedData;
 
         SavedDataStruct savedDataFromJson = JsonUtility.FromJson<SavedDataStruct>(jsonSavedData);
 
